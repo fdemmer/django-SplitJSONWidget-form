@@ -25,7 +25,10 @@ class SplitJSONWidget(forms.Widget):
     def _as_text_field(self, name, key, value, is_sub=False):
         attrs = self.build_attrs(self.attrs, type='text',
                                  name="%s%s%s" % (name, self.separator, key))
-        attrs['value'] = utils.encoding.force_unicode(value)
+        if hasattr(utils.encoding, 'force_unicode'):
+            attrs['value'] = utils.encoding.force_unicode(value)
+        else:
+            attrs['value'] = value
         attrs['id'] = attrs.get('name', None)
         return u""" <label for="%s">%s:</label>
         <input%s />""" % (attrs['id'], key, flatatt(attrs))
