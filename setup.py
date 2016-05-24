@@ -145,6 +145,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
     ],
+    use_2to3 = True,
     zip_safe=True,
     install_requires=(
         'Django>=1.3'),
