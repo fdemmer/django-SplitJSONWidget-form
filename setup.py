@@ -8,12 +8,12 @@ from setuptools import setup
 
 
 def read(*parts):
-    return codecs.open(os.path.join(os.path.dirname(__file__), *parts)).read()
+    return codecs.open(os.path.join(os.path.dirname(__file__), *parts), encoding='utf-8').read()
 
 
 def find_version(*file_paths):
     version_file = read(*file_paths)
-    version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
+    version_match = re.search("^__version__ = ['\"]([^'\"]*)['\"]",
                               version_file, re.M)
     if version_match:
         return version_match.group(1)
@@ -145,6 +145,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Topic :: Internet :: WWW/HTTP',
     ],
+    use_2to3 = True,
     zip_safe=True,
     install_requires=(
         'Django>=1.3'),
